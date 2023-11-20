@@ -20,7 +20,7 @@ class FileStorage:
     def all(self):
         """Returns the dictionary `__objects` while values are instances"""
 
-        return self.__objects
+        return FileStorage.__objects
 
     # _____________________________________________________________________________________
 
@@ -31,8 +31,7 @@ class FileStorage:
         objects_key = f"{obj.__class__.__name__}.{obj.id}"
 
         # Set the instance to the key has been created (`objects_key`)
-        self.__objects[objects_key] = obj
-        self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
+        FileStorage.__objects[objects_key] = obj
 
     # _____________________________________________________________________________________
 
@@ -42,11 +41,11 @@ class FileStorage:
         dict_of_obj = {}
 
         # Convert the `__objects` values (obj) to a dictionary representation
-        for k, v in self.__objects.items():
+        for k, v in FileStorage.__objects.items():
             dict_of_obj[k] = v.to_dict()
 
         # Convert the dictionary representation to a json string representation
-        with open(self.__file_path, "w", encoding="utf8") as wf:
+        with open(FileStorage.__file_path, "w", encoding="utf8") as wf:
             json.dump(dict_of_obj, wf)
 
     # _____________________________________________________________________________________
