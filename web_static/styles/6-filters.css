@@ -68,9 +68,14 @@ section.filters ul.popover
 	padding: 20px;
 }
 
-section.filters ul.popover li
+section.filters ul.popover > li
 {
-	padding-left: 20px;
+        margin-top: 4px;
+}
+
+section.filters ul.popover ul.sublist li
+{
+	padding-left: 15px;
 	margin-top: 3px;
 }
 
